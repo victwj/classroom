@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+// go run clock.go &
+// nc localhost 8000
 func main() {
 	listener, err := net.Listen("tcp", "localhost:8000")
 	if err != nil {
@@ -19,7 +21,8 @@ func main() {
 			log.Print(err)
 			continue
 		}
-		handleConn(conn)
+        // Spawn thread to handle connection
+		go handleConn(conn)
 	}
 }
 
