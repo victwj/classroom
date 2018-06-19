@@ -1,29 +1,24 @@
 package main
 
 import (
-    "fmt"
-    "time"
+	"fmt"
+	"time"
 )
 
+// Iterates through spin frame every delay duration
 func spinner(delay time.Duration) {
-    for {
-        for _, r := range `-\|/` {
-            fmt.Printf("\r%c", r)
-            time.Sleep(delay)
-        }
-    }
-}
-
-func fib(x int) int {
-    if x < 2 {
-        return x
-    }
-    return fib(x-1) + fib(x-2)
+	for {
+		for _, r := range `-\|/` {
+			// \r replaces prev character
+			fmt.Printf("\r%c", r)
+			time.Sleep(delay)
+		}
+	}
 }
 
 func main() {
-    go spinner(100 * time.Millisecond)
-    const n = 30
-    fibN := fib(n)
-    fmt.Printf("\rFibonacci(%d) = %d\n", n fibN)
+	// Start the spinner as a goroutine
+	go spinner(100 * time.Millisecond)
+	const n = 30
+	time.Sleep(5 * time.Second)
 }
