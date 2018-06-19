@@ -1,7 +1,13 @@
+# Go
+
+- Source: The Go Programming Language, Donovan & Kernighan 2016
+
 ## Setup
+
 - `export GOPATH=path/to/workspace/`
 
 ## Language Properties
+
 - Go is a compiled language; to compile, use `go build`. To build and run, use `go run`
 - Go code is organized into packages:
   
