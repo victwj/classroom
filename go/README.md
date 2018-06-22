@@ -4,19 +4,44 @@
 
 ## Setup
 
-- `export GOPATH=path/to/workspace/`
+- Important reads: [Installation](https://golang.org/doc/install) and [setup](https://golang.org/doc/code.html).
+
+- `GOPATH` is an environment variable defining the user workspace. The three main directories
+are `src` for source files, `pkg` for OS specific package objects, and `bin` for binaries from
+compiling source files. Add `bin` to PATH:
+
+```bash
+export PATH=$PATH:/usr/local/go/bin
+```
+
+- Import statements are resolved through the `GOPATH`, meaning that any installed packages will
+and must go here. Using `go get` will automatically do this.
 
 ## Language Properties
 
-- Go is a compiled language; to compile, use `go build`. To build and run, use `go run`
-- Go code is organized into packages:
-  
-A package consists of one or more .go source files defining what the package
-does.  Source file begins with `package` declaration, stating which package the
-file belongs to, e.g. `package main`.  `package main` and the function `main` in
-here is special. It defines standalone executable, and not a library.  Then
-comes `import` statements for other packages.
+- Go is a compiled language; to compile, use `go build`. To build and run, use `go run`.
 
-- Newlines are important, they replace semicolons
-- Use `gofmt` to rewrite code into standard format
-- Use `goimports` to manage import declarations, not part of the standard distribution.
+- Go code is organized into packages. Every source file belongs to a package, and convention is for 
+every package source file to be in its own directory. Don't put source files belonging to different
+packages in the same directory. When in a directory containing source files,
+`go install` will build the package to the workspace's `bin`.
+
+- Package `main` is special. It indicates that the package we are making is an executable, and not 
+just a library of functions.
+
+- Newlines are important, they replace semicolons.
+
+- Use `gofmt` to rewrite code into standard format.
+
+## Practice
+
+File | Description | Concepts
+---- | ----------- | --------
+`hello.go` | Customary hello world program | Code structure basics, printing
+`loop.go` | Echoes command line arguments to stdout | Variable declarations, for/while/range-based loops
+`if.go` | Input lines through stdin, output lines that have duplicates | If statements, stdin, maps
+`file.go` | Input lines through a file, output lines that have duplicates | Files
+`spinner.go` | Spawn thread that outputs spinner to stdout, to show program is still running | Goroutine
+`clock.go` | Server that handles clients concurrently. Sends current time at second intervals to client | Goroutine, networking
+`netcat.go` | Netcat like program to connect to server, and pipe to stdout | Channels
+`echo.go` | Concurrent server that echoes whatever its client sends | Goroutine, channels, networking
