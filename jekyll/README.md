@@ -59,9 +59,11 @@ Structure](https://jekyllrb.com/docs/structure/).
 This is the directory where all the templates are. The underscore signifies
 that this directory is not meant to be rendered for the final site, in this
 case because it contains templates. We render content *using* templates, and usually
-not just templates by themselves. For example, without the underscore, `index.html` 
-will be rendered by itself because it contains YAML front matter, which we don't want.
-The index page will then have no content, because `index.html` does not have content.
+not just templates by themselves. For example, without the underscore, the `index.html` template
+will be rendered by itself because it contains YAML front matter. We don't want this
+because the index page will then have no content, because `index.html` does not have content --
+it is a template. Instead, we want Jekyll to render content in `index.md` *using* 
+`index.html` as template.
 
 - `_includes/`
 
