@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title> {{ page.title }} </title>
+  </head>
+  <body>
+
+    <h3>_layouts/default.html: including header:</h3>
+    {% include header.html %}
+    
+    <h3>_layouts/default.html: invoking content variable:</h3>
+    {{ content }}
+
+    <h3>_layouts/default.html: including footer:</h3>
+    {% include footer.html %}
+  </body>
+</html>
