@@ -89,5 +89,5 @@ the `{{ content }}` section in `default.html`.
 Jekyll will render any file with YAML front matter, with no underscore
 prepended to the filename.  Front matter is a block at
 the top of the file enclosed with `---`. We create `index.md`, a markdown file,
-with front matter signifying it is to be rendered with the default template,
-via `layout: default`.
+with front matter signifying it is to be rendered with the index template,
+via `layout: index`.
