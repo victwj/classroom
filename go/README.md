@@ -1,6 +1,6 @@
 # Go
 
-Googles's Go programming language. 
+Google's Go programming language. 
 
 Learned for [Censored Planet](https://censoredplanet.com),
 namely to implement [Satellite](https://www.usenix.org/system/files/conference/atc16/atc16_paper-scott.pdf) and
@@ -46,13 +46,13 @@ just a library of functions.
 
 ## Practice
 
-File | Description | Concepts
----- | ----------- | --------
-`hello.go` | Customary hello world program | Code structure basics, printing
-`loop.go` | Echoes command line arguments to stdout | Variable declarations, for/while/range-based loops
-`if.go` | Input lines through stdin, output lines that have duplicates | If statements, stdin, maps
-`file.go` | Input lines through a file, output lines that have duplicates | Files
-`spinner.go` | Spawn thread that outputs spinner to stdout, to show program is still running | Goroutine
-`clock.go` | Server that handles clients concurrently. Sends current time at second intervals to client | Goroutine, networking
-`netcat.go` | Netcat like program to connect to server, and pipe to stdout | Channels
-`echo.go` | Concurrent server that echoes whatever its client sends | Goroutine, channels, networking
+File         | Description 
+------------ | ----------- 
+`hello.go`   | Customary hello world program
+`loop.go`    | Echoes command line arguments to stdout
+`if.go`      | Input lines through stdin, output lines that have duplicates
+`file.go`    | Input lines through a file, output lines that have duplicates
+`spinner.go` | Spawn thread that outputs spinner to stdout, to show program is still running
+`clock.go`   | Server that handles clients concurrently. Sends current time at second intervals to client
+`netcat.go`  | Netcat-like program to connect to server, and pipe to stdout
+`echo.go`    | Concurrent server that echoes whatever its client sends
