@@ -1,6 +1,17 @@
 # Go
 
-- Source: The Go Programming Language, Donovan & Kernighan 2016
+Googles's Go programming language. 
+
+Learned for [Censored Planet](https://censoredplanet.com),
+namely to implement [Satellite](https://www.usenix.org/system/files/conference/atc16/atc16_paper-scott.pdf) and
+[Iris](https://people.eecs.berkeley.edu/~pearce/papers/dns_usenix_2017.pdf), as well as maintain
+[Augur](https://people.eecs.berkeley.edu/~pearce/papers/augur_oakland_2017.pdf).
+
+## Sources
+
+- [The Go Programming Language, Donovan & Kernighan](https://www.gopl.io/)
+- [Go by Example](https://gobyexample.com/)
+- [A Tour of Go](https://tour.golang.org/list)
 
 ## Setup
 
@@ -17,7 +28,7 @@ export PATH=$PATH:/usr/local/go/bin
 - Import statements are resolved through the `GOPATH`, meaning that any installed packages will
 and must go here. Using `go get` will automatically do this.
 
-## Language Properties
+## Notes
 
 - Go is a compiled language; to compile, use `go build`. To build and run, use `go run`.
 
