@@ -10,3 +10,7 @@ interference detection tool, Satellite.
 
 - [Official Documentation](https://cloud.google.com/bigquery/docs/)
 - [GoDoc](https://godoc.org/cloud.google.com/go/bigquery)
+
+## Setup
+
+- [Official Documentation](https://cloud.google.com/bigquery/docs/quickstarts/quickstart-client-libraries)
