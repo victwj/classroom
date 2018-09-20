@@ -10,19 +10,25 @@ import (
 )
 
 func main() {
-	f, _ := os.Open("tmp")
+	// Load a file containing IPs for parameterized query argument
+	f, err := os.Open("tmp")
+	if err != nil {
+		panic(err)
+	}
 	s := bufio.NewScanner(f)
 	var data []string
 	for s.Scan() {
 		data = append(data, s.Text())
 	}
-	data = data[10:]
 
+	// Create context and client for BigQuery
 	ctx := context.Background()
 	client, err := bigquery.NewClient(ctx, "censoredplanet-v1")
 	if err != nil {
 		panic(err)
 	}
+
+	// Create SQL query with data slice as argument
 	q := client.Query(`
 		SELECT * FROM satellite.answers
 		WHERE
@@ -35,10 +41,13 @@ func main() {
 		},
 	}
 
+	// Execute query
 	it, err := q.Read(ctx)
 	if err != nil {
-		// TODO: Handle error.
+		panic(err)
 	}
+
+	// Loop through results, print to stdout
 	for {
 		var values []bigquery.Value
 		err := it.Next(&values)
@@ -46,7 +55,7 @@ func main() {
 			break
 		}
 		if err != nil {
-			// TODO: Handle error.
+			panic(err)
 		}
 		fmt.Println(values[0].(string))
 	}
