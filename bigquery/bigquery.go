@@ -11,7 +11,7 @@ import (
 
 func main() {
 	// Load a file containing IPs for parameterized query argument
-	f, err := os.Open("tmp")
+	f, err := os.Open("ips.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -30,10 +30,16 @@ func main() {
 
 	// Create SQL query with data slice as argument
 	q := client.Query(`
-		SELECT * FROM satellite.answers
-		WHERE
-		answer IN UNNEST(@data)
-	`)
+		#standardSQL
+		SELECT
+		  ip,
+		  autonomous_system.name,
+		  p80.http.get.body_sha256,
+		  p443.https.tls.certificate.parsed.fingerprint_sha256,
+		  p443.https.tls.validation.browser_trusted,
+		  autonomous_system.asn
+		FROM` + " `censys-io.ipv4_public.current` " +
+		`WHERE ip IN UNNEST(@data)`)
 	q.Parameters = []bigquery.QueryParameter{
 		{
 			Name:  "data",
@@ -57,6 +63,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Println(values[0].(string))
+		fmt.Println(values)
 	}
 }
