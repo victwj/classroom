@@ -1,6 +1,6 @@
 # :books: :school_satchel:
 
-This is where I push code and notes for all self-taught material!
+This is where I push code and notes for all self-taught material.
 
 Whenever I forget something I have learned, looking for the right resources to
 jog my memory is more time consuming than it should be. This repo's purpose is
@@ -14,5 +14,3 @@ This repo also serves as a reminder for me to learn in a structured and
 sequential manner. Although tempting, taking shortcuts often leads to wasted
 time in the long run. Putting up my notes and learning process should help
 by prompting me to organize everything in a presentable manner.
-
-I hope that this repo will continue to grow and be of some use to others!
