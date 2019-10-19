@@ -219,10 +219,6 @@ void bfs(Node * root) {
 
 - Depth First Search
 
-Preorder (Root, Left, Right)
-Postorder (Left, Right, Root)
-Inorder (Left, Root, Right)
-
 ```c++
 void inorder(Node* root) {
     if (!root) {
@@ -257,9 +253,8 @@ void postorder(Node* root) {
 
 - Binary Search
 
-Finds target in a sorted algorithm in logarithmic time.
-
 ```c++
+// v must be sorted
 int bsearch(const vector<int>& v, int val) {
     int left = 0;
     int right = v.size() - 1;
@@ -272,18 +267,17 @@ int bsearch(const vector<int>& v, int val) {
     }
     return -1;
 }
-
 ```
 
 - Binary Search Tree
 
-Left child must be less than parent's value.
+    - Left child must be less than parent's value.
 
-Use inorder traversal to get a sorted array.
+    - Use inorder traversal to get a sorted array.
 
-Insertion is very similar to search.
+    - Insertion is very similar to search.
 
-Deletion involves replacing node with in-order successor (left-most child of right child). Then delete the in-order successor, which is easy since it has 0 children or 1 right child. 
+    - Deletion involves replacing node with in-order successor (left-most child of right child). Then delete the in-order successor, which is easy since it has 0 children or 1 right child. 
 
 - Sorts
 
