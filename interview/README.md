@@ -161,9 +161,9 @@ p.pop();
 
 ## C++
 
-- Range based / Iterator for loop:
+- Range based / Iterator for loop
 
-```
+```c++
 // Read-only:
 for (auto x : v) // By value, makes a copy
 for (const auto& x : v) // More efficient, const reference
@@ -180,7 +180,7 @@ for (auto it = v.begin(); it < v.end(); it++) {
 
 - Files
 
-```
+```c++
 ifstream if;
 if.open("file.txt");
 if >> var;
@@ -189,10 +189,102 @@ of.open("file.txt");
 of << var;
 ```
 
-- Classes/Structs
+- Ternary Operator
+
+```c++
+// conditional ? (if true) : (if false)
+
+return x == 0 ? "true" : "false"
+```
+
+## Algorithms
+
+- BFS
+
+```c++
+void bfs(Node * root) {
+    queue<Node *> q;
+    q.push(root);
+    while (!q.empty()) {
+        Node * cur = q.front();
+        cout << cur->val << " ";
+        if (cur->left) q.push(cur->left);
+        if (cur->right) q.push(cur->right);
+        q.pop();
+    }
+    cout << endl;
+    return;
+}
+```
+
+- Depth First Search
+
+Preorder (Root, Left, Right)
+Postorder (Left, Right, Root)
+Inorder (Left, Root, Right)
+
+```c++
+void inorder(Node* root) {
+    if (!root) {
+        return;
+    }
+    inorder(root->left);
+    cout << root->val << " ";
+    inorder(root->right);
+    return;
+}
+
+void preorder(Node* root) {
+    if (!root) {
+        return;
+    }
+    cout << root->val << " ";
+    preorder(root->left);
+    preorder(root->right);
+    return;
+}
+
+void postorder(Node* root) {
+    if (!root) {
+        return;
+    }
+    postorder(root->left);
+    postorder(root->right);
+    cout << root->val << " ";
+    return;
+}
+```
+
+- Binary Search
+
+Finds target in a sorted algorithm in logarithmic time.
+
+```c++
+int bsearch(const vector<int>& v, int val) {
+    int left = 0;
+    int right = v.size() - 1;
+    while (left <= right) {
+        int idx = floor((left + right) / 2.0);
+        int cur = v[idx];
+        if (cur == val) return idx;
+        if (cur < val) left = idx + 1;
+        if (cur > val) right = idx - 1;
+    }
+    return -1;
+}
+
+```
+
+- Binary Search Tree
+
+Left child must be less than parent's value.
+
+Use inorder traversal to get a sorted array.
+
+Insertion is very similar to search.
+
+Deletion involves replacing node with in-order successor (left-most child of right child). Then delete the in-order successor, which is easy since it has 0 children or 1 right child. 
 
 - Sorts
 
-- Search
-
-- Trees
+- Dynamic Programming
