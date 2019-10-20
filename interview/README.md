@@ -144,6 +144,7 @@ d.insert(d.begin() + 1, 3);
 ```c++
 #include <queue>
 
+// PQ is the abstract data type, heap is the implementation
 // Standard order is greatest to least (max heap)
 priority_queue<int> p;
 
@@ -280,5 +281,43 @@ int bsearch(const vector<int>& v, int val) {
     - Deletion involves replacing node with in-order successor (left-most child of right child). Then delete the in-order successor, which is easy since it has 0 children or 1 right child. 
 
 - Sorts
+
+```c++
+void insertion(vector<int>& v) {
+    for (size_t i = 1; i < v.size(); ++i) {
+        for (size_t j = i; j > 0; --j) {
+            if (v[j] < v[j - 1]) swap(v[j], v[j - 1]);
+        }
+    }
+
+}
+
+void selection(vector<int>& v) {
+    size_t cur_idx = 0;
+    while (cur_idx < v.size()) {
+        size_t min_idx = cur_idx;
+        for (size_t j = cur_idx + 1; j < v.size(); ++j) {
+            if (v[min_idx] > v[j]) {
+                min_idx = j;
+            }
+        }
+        if (min_idx != cur_idx) swap(v[cur_idx], v[min_idx]);
+        cur_idx++;
+    }
+}
+
+void bubble(vector<int>& v) {
+    bool swapped = true;
+    while (swapped) {
+        swapped = false;
+        for (size_t i = 0; i < v.size() - 1; ++i) {
+            if (v[i] > v[i + 1]) {
+                swap(v[i], v[i + 1]);
+                swapped = true;
+            }
+        }
+    }
+}
+```
 
 - Dynamic Programming
