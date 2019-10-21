@@ -9,13 +9,13 @@ to be a quick reference.
 
 Data Structure | O(1) | O(logn) | O(n) 
 --- | --- | --- | ---
-Vector | [n], push_back\*, pop_back, size, empty |  | insert, erase
-List | front, push_front, pop_front, back, push_back, pop_back, insert, size, empty | | insert
-U-Map | [n]\*, [n] = a\*, erase\*, find\*, size, empty | | 
-Stack | top, push, pop, size, empty | | 
-Queue | front, push, pop, back, size, empty | |
-Deque | [n], front, push_front\*, pop_front, back, push_back\*, pop_back, size, empty | | insert, erase
-Priority Queue | top, size, empty | push, pop | 
+Vector | `[n], push_back\*, pop_back, size, empty` |  | `insert, erase`
+List | `front, push_front, pop_front, back, push_back, pop_back, insert, size, empty` | | `insert`
+U-Map | `[n]\*, [n] = a\*, erase\*, find\*, size, empty` | | 
+Stack | `top, push, pop, size, empty` | | 
+Queue | `front, push, pop, back, size, empty` | |
+Deque | `[n], front, push_front\*, pop_front, back, push_back\*, pop_back, size, empty` | | `insert, erase`
+Priority Queue | `top, size, empty` | `push, pop` | 
 
 
 \*Amortized
