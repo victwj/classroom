@@ -31,4 +31,39 @@ var add = function (a, b) {
 - A function literal can appear anywhere an expression can appear; so it can be inside other functions (and has access to the outer params/vars), called _closure_
 - Every function receives `this` and `arguments` as additional parameters
 - `this` is determined by the invocation pattern: method, function, constructor, or apply invocations
-- Invocation is a pair of parenteses that follow any expression that produces a function value
+
+#### Invocations
+- Invocation is a pair of parentheses that follow any expression that produces a function value
+    - There is no type checking to the given arguments
+    - Too many arguments will be ignored, too few will result in `undefined`
+- Method invocation:
+    - Function stored as a property of an object
+    - When invoked, the function is bound to that object
+    - Methods can use `this` to access/modify the object
+- Function invocation: when the function is not the property of an object
+    - `this` is bound to the global object
+    - Error in language design; it should be bound to the outer function `this`
+    - Can be worked around, by convention a variable called `that` set to `this`
+- Constructor invocation:
+    - JS is a _prototypal_ inheritance language; objects can inherit properties directly from other objects, and the language is class-free
+    - Invoke with a `new` prefix
+    - Not recommended to use
+
+    ```
+    var Quo = function (string) { // Capitalize first letter for constructors
+        this.status = string; // "this" is special for constructors
+    }
+    
+    Quo.prototype.get_status = function () { return this.status; };
+    var myQuo = new Quo("hello")
+    document.writeln(myQuo.get_status()); // "hello"
+    ```
+- Apply invocation:
+    - JS is a _functional_ object-oriented language; functions can have methods
+    - `apply` is a method to call a function with a given `this` value 
+    - First argument of `apply` is the `this`, the second argument is an array of arguments to call the function with
+- `arguments` is a bonus parameter available to functions, and it is an array that contains _all_ arguments including those in excess
+    - `arguments` is array-like but does not contain any array methods
+
+#### Exceptions
+
