@@ -39,7 +39,7 @@ var add = function (a, b) {
 - Every function receives `this` and `arguments` as additional parameters
 - `this` is determined by the invocation pattern: method, function, constructor, or apply invocations
 
-#### Invocations
+### Invocations
 - Invocation is a pair of parentheses that follow any expression that produces a function value
     - There is no type checking to the given arguments
     - Too many arguments will be ignored, too few will result in `undefined`
@@ -55,15 +55,15 @@ var add = function (a, b) {
     - JS is a _prototypal_ inheritance language; objects can inherit properties directly from other objects, and the language is class-free
     - Invoke with a `new` prefix; but this is not recommended
 
-    ``` javascript
-    var Quo = function (string) { // Capitalize first letter for constructors
-        this.status = string; // "this" is special for constructors
-    }
-    
-    Quo.prototype.get_status = function () { return this.status; };
-    var myQuo = new Quo("hello")
-    document.writeln(myQuo.get_status()); // "hello"
-    ```
+``` javascript
+var Quo = function (string) { // Capitalize first letter for constructors
+    this.status = string; // "this" is special for constructors
+}
+
+Quo.prototype.get_status = function () { return this.status; };
+var myQuo = new Quo("hello")
+document.writeln(myQuo.get_status()); // "hello"
+```
 - Apply invocation:
     - JS is a _functional_ object-oriented language; functions can have methods
     - `apply` is a method to call a function with a given `this` value 
@@ -72,11 +72,38 @@ var add = function (a, b) {
     - `arguments` is array-like but does not contain any array methods
 - The `exception` object contains a `name` and a `message`; other properties can be added
 
-## Prototypes
-- 
+### Prototypes
+- Start by making a useful object; then make many more objects that are like that one 
+
+``` javascript
+var myMammal = { ... };
+var myCat = Object.create(myMammal);
+// Customize new instance
+myCat.saying = "meow";
+```
+- _Differential inheritance_: customizing a new object is specifying the differences from the object on which it is based
+- One weakness is that we get no privacy; all properties of an object are visible
+- Functional pattern:
+    - Create a new object
+    - Optionally defines private variables and methods; they are just ordinary vars of the function
+    - Augment new object with methods; these methods will have privileged access to vars in step 2
+    - Return the new object
+
+``` javascript
+var constructor = function (spec, my) {
+    var that, other private variables;
+    my = my || {}
+    // Add shared variables and functions to my
+    that = a new object;
+    // Add privileged methods to that
+    return that;
+};
+```
+
+- `spec` contains all information to make an instance, `my` is a container shared by constructors in the inheritance chain (optional)
 
 
-## The Good Parts
+### The Good Parts
 - JavaScript makes it easy to define global variables, but globals increase the chance of bad interactions and reduces readability
 - To reduce globals, use global abatement:
 
@@ -123,7 +150,7 @@ var myObject = myFunction({
 // Arguments can be in different order, more clear, less errors
 ```
 
-## The Bad Parts
+### The Bad Parts
 - Don't use `==` or `!=`; Always use `===` or `!==`
 - Don't use `with`
 - Don't use bit operators (unless you have to); they're very slow
