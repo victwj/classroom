@@ -1,14 +1,20 @@
 # JavaScript
 
+JavaScript is an indispensable language for web programming. 
+Learned for research work at [Princeton CITP](https://citp.princeton.edu/).
+
 ## Sources
 - [Eloquent JavaScript 3rd Edition](https://eloquentjavascript.net/)
 - [JavaScript: The Good Parts](https://github.com/NorthPaulo/research/blob/master/Frontend-books%26research/JavaScript%20-%20The%20Good%20Parts%20-%20Douglas%20Crockford%20-%20May%202008.pdf)
+- Reviewed: _The Good Parts_ for a quick language overview, then _Eloquent JavaScript_ Ch.12+ for more on the browser and DOM environment
 
 ## Notes
 - JavaScript is loosely typed; it never casts
 - "What matters about an object is what it can do, not what it is descended from"
 - JavaScript is a _prototypal_ language; objects inherit directly from other objects (not classes)
 - "The pseudoclassical form [of JavaScript] can provide comfort to programmers who are unfamiliar with JavaScript, but it also hides the true nature of the language. Much of the complexity of class hierarchies is motivated by the constraints of static type checking. JavaScript is completely free of those constraints. In classical languages, class inheritance is the only form of code reuse. JavaScript has more and better options."
+- "JavaScript's loose typing and excessive error tolerance provide little compile-time assurance of our program's quality, so to compensate, we should code with strict discipline."
+
 
 ### Objects
 - Numbers (everything in JS is float64), strings, booleans, null, undefined are simple types
@@ -17,7 +23,6 @@
 - Objects can be accessed using [] or .
 - Objects are always passed by reference
 - All objects are linked to a _prototype object_ which it can inherit properties from
-- `typeof` and `.hasOwnProperty` (check without property without delegation)is useful when working with objects
 - Objects produced using object literals are linked to `Object.prototype`
 - Function objects are linked to `Function.prototype` which is linked to `Object.prototype`
 - Javascript _does not_ have block scope, unlike C-style languages
@@ -102,6 +107,15 @@ var constructor = function (spec, my) {
 
 - `spec` contains all information to make an instance, `my` is a container shared by constructors in the inheritance chain (optional)
 
+### Arrays
+- Arrays in JavaScript aren't like arrays in other languages; they are objects with array-like properties
+- `arr[1]` is converted to `arr["1"]`, like the way to access an object; significantly slower than real arrays
+- Create an array using `var arr = [];`
+- `arr.length` returns length, but it is not an upper bound; there is no out-of-index, and it doesn't allocate more space for the array
+- `delete` can be used to remove elements from the array, leaving an undefined hole; don't use it
+- Object vs. array rule: if property names are sequential integers, then use an array
+
+
 
 ### The Good Parts
 - JavaScript makes it easy to define global variables, but globals increase the chance of bad interactions and reduces readability
@@ -149,6 +163,14 @@ var myObject = myFunction({
 });
 // Arguments can be in different order, more clear, less errors
 ```
+
+### Beautiful Features
+
+### The Awful Parts
+- Be careful of implied global declarations: `foo = value` is a global variable
+- No block scope; declare all your variables at the top of the function
+- Semicolon insertion; JavaScript tries to correct programs unreliably
+- `NaN` results from converting bad string to a number; `NaN === NaN` is false
 
 ### The Bad Parts
 - Don't use `==` or `!=`; Always use `===` or `!==`
